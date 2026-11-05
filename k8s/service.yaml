@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: carepoint-service
+spec:
+  type: ClusterIP
+  selector:
+    app: carepoint
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000

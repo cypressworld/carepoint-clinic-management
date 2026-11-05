@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carepoint
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carepoint
+  template:
+    metadata:
+      labels:
+        app: carepoint
+    spec:
+      containers:
+        - name: carepoint
+          image: clinic-app:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: carepoint-env
